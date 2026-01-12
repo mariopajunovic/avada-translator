@@ -1,4 +1,4 @@
-# Avada Content Extractor
+# Avada Translator
 
 A Python toolkit for extracting, translating, and re-assembling Avada/Fusion Builder content using OpenAI.
 
