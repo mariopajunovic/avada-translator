@@ -23,7 +23,7 @@ def cmd_export(args):
     count = export_from_file(input_file, out_dir)
     print(f"Exported {count} containers to folder '{out_dir}'.")
 
-def cmd_product_export(args):
+def cmd_batch_export(args):
     src_dir = Path(args.src)
     out_root = Path(args.out)
 
@@ -72,11 +72,11 @@ def main():
     p1.add_argument("--out", default="containers", help="Output folder")
     p1.set_defaults(func=cmd_export)
 
-    p2 = sub.add_parser("product_export", help="Batch export containers from folder")
+    p2 = sub.add_parser("batch_export", help="Batch export containers from folder")
     p2.add_argument("--src", required=True, help="Source folder with .txt files")
     p2.add_argument("--out", default="containers", help="Output folder")
     p2.add_argument("--print-each", action="store_true")
-    p2.set_defaults(func=cmd_product_export)
+    p2.set_defaults(func=cmd_batch_export)
 
     args = ap.parse_args()
     args.func(args)

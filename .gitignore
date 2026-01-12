@@ -1,7 +1,7 @@
 /jobs/*
-/products/*
+/content/*
 !/jobs/.gitkeep
-!/products/.gitkeep
+!/content/.gitkeep
 
 # Python
 __pycache__/

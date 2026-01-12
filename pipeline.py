@@ -15,7 +15,7 @@ def run(cmd):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--src", default="products", help="Source folder with .txt files")
+    ap.add_argument("--src", default="content", help="Source folder with .txt files")
     ap.add_argument("--lang", default="English", help="Target language for OpenAI translation")
     ap.add_argument("--model", default="gpt-5-mini")
     ap.add_argument("--workers", type=int, default=12)
@@ -43,7 +43,7 @@ def main():
     run([
         "python3",
         str(SCRIPT_DIR / "extract.py"),
-        "product_export",
+        "batch_export",
         "--src", args.src,
         "--out", export_dir,
         "--print-each"

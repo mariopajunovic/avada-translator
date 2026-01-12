@@ -28,7 +28,7 @@ export OPENAI_API_KEY='your-api-key-here'
 1. Open the page in WordPress admin (Avada Live or Backend editor)
 2. Switch to "Code" view to see the raw Fusion Builder shortcodes
 3. Copy the entire page content
-4. Save it as a `.txt` file in your source folder (e.g., `products/page-name.txt`)
+4. Save it as a `.txt` file in your source folder (e.g., `content/page-name.txt`)
 
 This approach **speeds up translation by ~90%** and **reduces costs significantly** compared to translating in WordPress directly:
 - Only translatable text is sent to OpenAI (not the entire page structure)
@@ -39,7 +39,7 @@ This approach **speeds up translation by ~90%** and **reduces costs significantl
 ## Quick Start
 
 ```bash
-python3 pipeline.py --src products/ --lang "German"
+python3 pipeline.py --src content/ --lang "German"
 ```
 
 This creates a job folder in `jobs/german_YYYY-MM-DD_HH-MM/` with all outputs.
@@ -51,13 +51,13 @@ This creates a job folder in `jobs/german_YYYY-MM-DD_HH-MM/` with all outputs.
 Orchestrates the entire translation workflow. Each run creates a new job folder.
 
 ```bash
-python3 pipeline.py --src products/ --lang "German" --model gpt-4o-mini --workers 12 --batch 40
+python3 pipeline.py --src content/ --lang "German" --model gpt-4o-mini --workers 12 --batch 40
 ```
 
 **Arguments:**
 | Argument | Default | Description |
 |----------|---------|-------------|
-| `--src` | `products` | Source folder with .txt files |
+| `--src` | `content` | Source folder with .txt files |
 | `--lang` | `English` | Target language |
 | `--model` | `gpt-5-mini` | OpenAI model |
 | `--workers` | `12` | Parallel workers |
@@ -74,7 +74,7 @@ Extracts `[fusion_builder_container]` blocks from source files.
 python3 extract.py export --input page.txt --out exported/
 
 # Batch export
-python3 extract.py product_export --src products/ --out containers/ --print-each
+python3 extract.py batch_export --src content/ --out containers/ --print-each
 ```
 
 ### `segments.py` - Segment Extraction & Application
